@@ -15,7 +15,7 @@ class Deploy {
     * FALSE to disable logging.
     * @var string
     */
-    private $_log = 'deployments.log';
+    private $_log = 'webhook/deployments.log';
 
     /**
     * The timestamp format used for logging.
@@ -97,8 +97,8 @@ class Deploy {
         try
         {
             // Make sure we're in the right directory
-            exec('cd '.$this->_directory, $output);
-            $this->log('Changing working directory... '.implode(' ', $output));
+            chdir($this->_directory);
+            $this->log('Changing working directory... '.getcwd());
 
             // Discard any changes to tracked files since our last deploy
             exec('git reset --hard HEAD', $output);
