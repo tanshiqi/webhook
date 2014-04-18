@@ -109,8 +109,8 @@ class Deploy {
             $this->log('Pulling in changes... '.implode(' ', $output));
 
             // Secure the .git directory
-            exec('chmod -R og-rx .git');
-            $this->log('Securing .git directory... ');
+            // exec('chmod -R og-rx .git');
+            // $this->log('Securing .git directory... ');
 
             if (is_callable($this->post_deploy))
             {
